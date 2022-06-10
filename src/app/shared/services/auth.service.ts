@@ -33,6 +33,8 @@ export class AuthService {
     return this.getCurrentUser().pipe(map((currentUser) => !!currentUser));
   }
 
+  // refer to this link for auth instructions using magic.link:
+  // https://magic.link/posts/magic-firebase-integration#connect-magic-to-firebase-auth
   async signInWithMagicLink(email: string) {
     // const helloWordFunc = this.firebaseFuncs.httpsCallable('helloWorld');
     // helloWordFunc({}).pipe(take(1)).subscribe((result) => {
@@ -46,20 +48,26 @@ export class AuthService {
     //   .subscribe((res) => console.log('helloWorld function called:', res));
 
     return new Promise<void>(async (resolve, reject) => {
-      const didToken = await magic.auth.loginWithMagicLink({ email });
+      try {
+        const didToken = await magic.auth.loginWithMagicLink({ email });
 
-      const authFunc = this.firebaseFuncs.httpsCallable(
-        'getFirebaseUserAccessToken'
-      );
-      authFunc({ didToken })
-        .pipe(take(1))
-        .subscribe(async (result) => {
-          // console.log('firebase func executed:', result);
-          const loginRes = await this.auth.signInWithCustomToken(result.token);
-          // console.log('User logged in:', loginRes);
-          this.router.navigate(['']);
-          resolve();
-        });
+        const authFunc = this.firebaseFuncs.httpsCallable(
+          'getFirebaseUserAccessToken'
+        );
+        authFunc({ didToken })
+          .pipe(take(1))
+          .subscribe(async (result) => {
+            // console.log('firebase func executed:', result);
+            const loginRes = await this.auth.signInWithCustomToken(
+              result.token
+            );
+            // console.log('User logged in:', loginRes);
+            this.router.navigate(['']);
+            resolve();
+          });
+      } catch (err) {
+        console.error('Error when signing in using magic link:', err);
+      }
     });
   }
 
