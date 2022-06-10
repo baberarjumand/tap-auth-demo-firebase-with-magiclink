@@ -1,0 +1,20 @@
+<ion-content class="ion-text-center">
+  <div class="container-div">
+    <ng-template [ngIf]="isLoading">
+      <ion-spinner></ion-spinner>
+    </ng-template>
+    <ng-template [ngIf]="!isLoading && !emailSubmitted">
+      <input type="email" placeholder="Enter Email" [(ngModel)]="emailInput" />
+      <ion-button role="button" (click)="signInWithMagicLink()">
+        Sign In With Magic Link
+      </ion-button>
+    </ng-template>
+    <ng-template [ngIf]="!isLoading && emailSubmitted">
+      <p>
+        Sign-in link successfully sent!<br />
+        Please check your inbox.
+      </p>
+      <ion-button role="button" (click)="resetForm()">Go Back</ion-button>
+    </ng-template>
+  </div>
+</ion-content>

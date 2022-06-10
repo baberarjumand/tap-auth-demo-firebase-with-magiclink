@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tap-auth-demo-fireb-magiclink": {
+      "hosting": {
+        "app": [
+          "tap-auth-demo-fireb-magiclink"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tap-auth-demo-fireb-magiclink"
+  }
+}
