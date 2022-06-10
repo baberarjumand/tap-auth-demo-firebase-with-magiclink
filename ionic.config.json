@@ -1,0 +1,7 @@
+{
+  "name": "tap-auth-demo-firebase-with-magiclink",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
