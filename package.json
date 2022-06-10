@@ -10,7 +10,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ionic build && firebase deploy"
+    "deploy": "ionic build && firebase deploy",
+    "deploy-functions": "firebase deploy --only functions",
+    "deploy-hosting": "ionic build && firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "@capacitor/keyboard": "1.2.2",
     "@capacitor/status-bar": "1.0.8",
     "@ionic/angular": "^6.1.9",
+    "magic-sdk": "^8.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

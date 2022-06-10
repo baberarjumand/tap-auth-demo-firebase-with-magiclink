@@ -2,6 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { MAGIC_LINK_API_KEY } from './magic-link-api-key';
+
+// for the magic link api key, create an account on Magic.Link and get your API key
+// Then create a file named 'magic-link-api-key.ts' in this folder.
+// Then copy and paste the following code into it:
+
+// export const MAGIC_LINK_API_KEY = 'pk_live_XXXXXXXXXXXXXXXXXXXXX';
+
 export const environment = {
   firebase: {
     projectId: 'tap-auth-demo-fireb-magiclink',
@@ -12,7 +20,8 @@ export const environment = {
     messagingSenderId: '932041818255',
     measurementId: 'G-4S3N1FV308',
   },
-  production: false
+  production: false,
+  magicLinkApiKey: MAGIC_LINK_API_KEY,
 };
 
 /*

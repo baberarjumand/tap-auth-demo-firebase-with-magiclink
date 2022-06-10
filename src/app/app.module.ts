@@ -10,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+
+// import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +22,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     AppRoutingModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),
-    provideFunctions(() => getFunctions()),
+    // provideFunctions(() => getFunctions()),
+    AngularFireFunctionsModule,
+    // HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

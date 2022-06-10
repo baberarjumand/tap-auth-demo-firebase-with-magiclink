@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginPage implements OnInit {
   emailInput = '';
   emailSubmitted = false;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -20,7 +21,7 @@ export class LoginPage implements OnInit {
     return emailPattern.test(email);
   }
 
-  signInWithMagicLink() {
+  async signInWithMagicLink() {
     this.isLoading = true;
 
     if (!this.validateEmail(this.emailInput)) {
@@ -29,6 +30,7 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    await this.authService.signInWithMagicLink(this.emailInput);
   }
 
   resetForm() {

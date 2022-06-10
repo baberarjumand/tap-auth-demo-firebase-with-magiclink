@@ -35,3 +35,8 @@ npm-debug.log*
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+magic-link-api-key.ts
+*.env
+firebase-service-account.js
+firebase-service-account.json
